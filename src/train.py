@@ -17,8 +17,7 @@ def train():
         df[FEATURES], df[TARGET], test_size=0.2, random_state=42
     )
 
-    Path("mlruns").mkdir(exist_ok=True)
-    mlflow.set_tracking_uri(Path("mlruns").resolve().as_uri())
+    mlflow.set_tracking_uri("sqlite:///mlflow.db")
     mlflow.set_experiment("house-price-regression")
 
     with mlflow.start_run() as run:
